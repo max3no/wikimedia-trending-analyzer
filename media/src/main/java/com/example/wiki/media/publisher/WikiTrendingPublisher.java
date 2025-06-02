@@ -74,27 +74,6 @@ class WikiTrendingPublisher implements CommandLineRunner {
         }
     }
 
-//    private List<String> fetchTrendingWikipediaArticles() {
-//        String url = "https://en.wikipedia.org/api/rest_v1/feed/trending/pageviews";
-//        RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
-//
-//        // The JSON structure has "items" → first item → "articles"
-//        // Each article has "article" (title), "views", etc.
-//        try {
-//            List<Map<String, Object>> items = (List<Map<String, Object>>) response.getBody().get("items");
-//            Map<String, Object> firstItem = items.get(0);
-//            List<Map<String, Object>> articles = (List<Map<String, Object>>) firstItem.get("articles");
-//
-//            return articles.stream()
-//                    .map(article -> (String) article.get("article"))
-//                    .toList();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return List.of();
-//        }
-//    }
-//
 private List<WikiArticle> fetchTrendingWikipediaArticles() {
     LocalDate today = LocalDate.now().minusDays(2L);
     String dateStr = today.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
